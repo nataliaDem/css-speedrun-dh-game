@@ -1,0 +1,259 @@
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+details {
+  list-style: disclosure-closed;
+  padding-left: 25px;
+
+  summary {
+    padding-left: 5px;
+  }
+}
+
+details[open] {
+  list-style: disclosure-open;
+}
+
+main section {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.left-column {
+  width: 60%;
+  margin-right: 10px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.right-column {
+  width: 40%;
+  margin-left: 10px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+.codebox {
+  position: relative;
+  display: flex;
+
+  pre:first-child { overflow: hidden; }
+  pre:last-child { width: 100%; }
+}
+
+#css-input {
+  width: calc(100% - 50px);
+  margin-right: 5px;
+
+  &.error {
+    border-color: #B71C1C;
+  }
+
+  &.success {
+    border-color: #43A047;
+  }
+}
+
+@keyframes timerSuccess {
+  0% { opacity: 0; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(-100%); }
+  100% { opacity: 0; transform: translateY(-100%); }
+}
+
+
+#timer {
+  display: block;
+  position: relative;
+
+  font-size: 23px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 14px;
+
+  &.done {
+    background: #2E7D32;
+  }
+
+  &::before {
+    content: attr(data-before);
+    position: absolute;
+    opacity: 0;
+    color: #43A047;
+    visibility: hidden;
+  }
+
+  &.success::before {
+    visibility: visible;
+    animation-name: timerSuccess;
+    animation-duration: 1.5s;
+  }
+}
+
+#levels {
+  padding-left: 0;
+
+  > li {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5h14z" fill="white"></path></svg>');
+      background-size: 20px 20px;
+      padding: 0 10px;
+      display: inline-flex;
+    }
+  }
+
+  .active {
+    font-weight: 900;
+  }
+
+  .done {
+    color: #43A047;
+
+    &::before {
+      content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M19 19H5V5h10V3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8h-2m-11.09-.92L6.5 11.5L11 16L21 6l-1.41-1.42L11 13.17l-3.09-3.09z" fill="%2343A047"></path></svg>');
+      background-size: 20px 20px;
+    }
+  }
+
+  .timeResult {
+    color: #fff;
+    margin: 0 0 0 auto;
+    font-style: italic;
+    opacity: 0.5;
+  }
+}
+
+#share-tweet {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--nc-bg-3);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-top: 1rem;
+
+  svg {
+    margin-right: 6px;
+  }
+}
+
+#result-screen {
+  h1 {
+    padding-top: 0;
+    padding-bottom: 1rem;
+  }
+}
+
+#hint1 {
+  margin-right: 20px;
+}
+
+#hint1, #hint2 {
+  color: #fff;
+  opacity: 0;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity ease-in-out 0.5s;
+  visibility: hidden;
+
+  &.fade-in {
+    visibility: visible;
+    opacity: 0.45;
+  }
+
+  > svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+#solution, #next-level {
+  margin: 0;
+}
+
+#next-level {
+  opacity: 0.5;
+}
+
+#html-selection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#html-preview {
+  position: relative;
+  display: block;
+
+  .check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+    li {
+      width: 100%;
+      opacity: 0.2;
+      height: 1.5em;
+      margin: 0;
+    }
+
+    .correct {
+      background-color: #66BB6A;
+    }
+    .wrong {
+      background-color: #EF5350;
+    }
+  }
+}
+
+#tooltip {
+  background: #333;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  font-size: 1em;
+  border-radius: 4px;
+  display: none;
+  z-index: 1;
+}
+
+#tooltip[data-show] {
+  display: block;
+}
