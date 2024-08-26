@@ -4,6 +4,8 @@ import JSConfetti from 'js-confetti'
 import { createPopper } from '@popperjs/core';
 import puzzles from './puzzles'
 
+import {updateProgress} from '../../modules/common'
+
 const jsConfetti = new JSConfetti()
 const timer = new Timer({ precision: 'secondTenths' })
 
@@ -39,6 +41,9 @@ const getFormattedNumber = i => i.toString().padStart(2, 0)
 
 const levelSuccess = () => {
   solutionCode.innerHTML = Prism.highlight(puzzles[levelIndex].solution, Prism.languages.markup, 'css');
+
+
+  updateProgress(levelIndex, new Date());
 
   levelIndex++;
   isLevelSuccess = true;

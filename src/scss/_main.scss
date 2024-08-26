@@ -1,7 +1,11 @@
 body {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 100px;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
 }
 
 .hidden {
@@ -68,7 +72,7 @@ main section {
 }
 
 #css-input {
-  width: calc(100% - 50px);
+  width: calc(100% - 60px);
   margin-right: 5px;
 
   &.error {

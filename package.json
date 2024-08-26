@@ -45,8 +45,11 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.2",
+    "dotenv": "^16.4.5",
     "easytimer.js": "^4.5.1",
+    "express": "^4.19.2",
     "js-confetti": "^0.10.2",
-    "prismjs": "^1.26.0"
+    "prismjs": "^1.26.0",
+    "regenerator-runtime": "^0.14.1"
   }
 }

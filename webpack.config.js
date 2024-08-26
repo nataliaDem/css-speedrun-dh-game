@@ -1,8 +1,13 @@
+const webpack = require('webpack');
+
 module.exports = {
-    entry: './src/js/main.js',
+    entry: {
+        player: ['./src/js/jquery.js', './src/js/common.js', './src/js/constants.js', './src/js/main.js', './src/js/game.js' ],
+        admin: ['./src/js/jquery.js', './src/js/common.js', './src/js/constants.js', './src/js/main.js', './src/js/admin.js' ]
+    },
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
     },
     module: {
         rules: [
