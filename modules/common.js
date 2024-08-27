@@ -72,14 +72,18 @@ function playWinSound(audioId) {
 function updateProgress(level, timestamp) {
   const gameCode = localStorage.getItem("gameCode");
   const userId = localStorage.getItem("userId")
-  axios.post(`${baseUrl}/api/update-progress?code=${gameCode}`, {
-    id: userId,
-    level: level,
-    lastAnswerTime: timestamp
-  })
-      .then(res => {
-        console.log(res.data);
-      });
+  if (userId === null) {
+    console.log('admin actions')
+  } else {
+    axios.post(`${baseUrl}/api/update-progress?code=${gameCode}`, {
+      id: userId,
+      level: level,
+      lastAnswerTime: timestamp
+    })
+        .then(res => {
+          console.log(res.data);
+        });
+  }
 }
 
 module.exports = {

@@ -100,9 +100,10 @@ header {
 
 .left-col {
   width: calc(100% - 375px);
+  height: calc(100% - 115px);
   overflow-x: visible;
   position: fixed;
-  top: 0;
+  top: 115px;
   bottom: 0;
   left: 0;
   z-index: 2;
